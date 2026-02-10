@@ -387,6 +387,9 @@ let state = {
   quizStep: 0
 };
 
+let rollTimer = null;
+let rollTimeout = null;
+
 // =============================================================================
 // DOM ELEMENTS
 // =============================================================================
@@ -504,16 +507,25 @@ function renderRestaurantCard(restaurant, isSpotlight = false) {
   // Build link buttons
   const linkButtons = [];
   if (restaurant.links.maps) {
-    linkButtons.push(`<a href="${restaurant.links.maps}" target="_blank" rel="noopener" class="btn btn-sm btn-outline" aria-label="Open ${restaurant.name} in Google Maps">📍 Maps</a>`);
+    linkButtons.push(`<a href="${restaurant.links.maps}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="Open ${restaurant.name} in Google Maps">📍 Maps</a>`);
   }
   if (restaurant.phone) {
     linkButtons.push(`<a href="tel:${restaurant.phone.replace(/\D/g, '')}" class="btn btn-sm btn-outline" aria-label="Call ${restaurant.name}">📞 Call</a>`);
   }
   if (restaurant.links.website) {
-    linkButtons.push(`<a href="${restaurant.links.website}" target="_blank" rel="noopener" class="btn btn-sm btn-outline" aria-label="Visit ${restaurant.name} website">🌐 Website</a>`);
+    linkButtons.push(`<a href="${restaurant.links.website}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="Visit ${restaurant.name} website">🌐 Website</a>`);
   }
   if (restaurant.links.yelp) {
-    linkButtons.push(`<a href="${restaurant.links.yelp}" target="_blank" rel="noopener" class="btn btn-sm btn-outline" aria-label="View ${restaurant.name} on Yelp">Yelp</a>`);
+    linkButtons.push(`<a href="${restaurant.links.yelp}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="View ${restaurant.name} on Yelp">Yelp</a>`);
+  }
+  if (restaurant.links.tripadvisor) {
+    linkButtons.push(`<a href="${restaurant.links.tripadvisor}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="View ${restaurant.name} on TripAdvisor">TripAdvisor</a>`);
+  }
+  if (restaurant.links.facebook) {
+    linkButtons.push(`<a href="${restaurant.links.facebook}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="Visit ${restaurant.name} on Facebook">Facebook</a>`);
+  }
+  if (restaurant.links.untappd) {
+    linkButtons.push(`<a href="${restaurant.links.untappd}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" aria-label="View ${restaurant.name} on Untappd">Untappd</a>`);
   }
   
   const html = `
@@ -696,26 +708,76 @@ function clearAllFilters() {
 
 function randomPick() {
   if (state.shortlist.length === 0) return;
-  
-  const randomId = state.shortlist[Math.floor(Math.random() * state.shortlist.length)];
-  const restaurant = restaurants.find(r => r.id === randomId);
-  
-  if (restaurant) {
+
+  const shortlistRestaurants = state.shortlist
+    .map(id => restaurants.find(r => r.id === id))
+    .filter(Boolean);
+
+  if (shortlistRestaurants.length === 0) return;
+
+  stopRandomRoll();
+  openModal(elements.randomModal);
+
+  const renderWinner = (restaurant) => {
     elements.randomResult.innerHTML = `
       <h3>🎲 The Pick Is In!</h3>
       <p class="winner-name">${restaurant.emoji} ${escapeHtml(restaurant.name)}</p>
       <p>${escapeHtml(restaurant.shortWhy)}</p>
       <div class="winner-actions">
-        ${restaurant.links.maps ? `<a href="${restaurant.links.maps}" target="_blank" rel="noopener" class="btn btn-primary">📍 Get Directions</a>` : ''}
-        <button class="btn btn-secondary" id="spin-again">🔄 Spin Again</button>
+        ${restaurant.links.maps ? `<a href="${restaurant.links.maps}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">📍 Get Directions</a>` : ''}
+        <button class="btn btn-secondary" id="spin-again">🔄 Roll Again</button>
+        ${restaurant.links.yelp ? `<a href="${restaurant.links.yelp}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">⭐ Yelp Reviews</a>` : ''}
       </div>
     `;
-    
-    openModal(elements.randomModal);
-    
-    document.getElementById('spin-again')?.addEventListener('click', () => {
-      randomPick();
-    });
+
+    document.getElementById('spin-again')?.addEventListener('click', randomPick);
+  };
+
+  if (shortlistRestaurants.length === 1) {
+    renderWinner(shortlistRestaurants[0]);
+    return;
+  }
+
+  elements.randomResult.innerHTML = `
+    <h3>🎲 Rolling...</h3>
+    <div class="dice-stage" aria-hidden="true">
+      <div class="die">🎲</div>
+      <div class="die">🎲</div>
+    </div>
+    <p class="roll-name">Picking between favorites...</p>
+  `;
+
+  const rollName = elements.randomResult.querySelector('.roll-name');
+  let lastIndex = -1;
+
+  rollTimer = setInterval(() => {
+    if (!rollName) return;
+    let nextIndex = Math.floor(Math.random() * shortlistRestaurants.length);
+    if (shortlistRestaurants.length > 1) {
+      while (nextIndex === lastIndex) {
+        nextIndex = Math.floor(Math.random() * shortlistRestaurants.length);
+      }
+    }
+    lastIndex = nextIndex;
+    const candidate = shortlistRestaurants[nextIndex];
+    rollName.textContent = `${candidate.emoji} ${candidate.name}`;
+  }, 90);
+
+  rollTimeout = setTimeout(() => {
+    stopRandomRoll();
+    const finalWinner = shortlistRestaurants[Math.floor(Math.random() * shortlistRestaurants.length)];
+    renderWinner(finalWinner);
+  }, 1600);
+}
+
+function stopRandomRoll() {
+  if (rollTimer) {
+    clearInterval(rollTimer);
+    rollTimer = null;
+  }
+  if (rollTimeout) {
+    clearTimeout(rollTimeout);
+    rollTimeout = null;
   }
 }
 
@@ -881,7 +943,7 @@ function showQuizResults() {
           ${result.matchReasons.map(r => `<li>${escapeHtml(r)}</li>`).join('')}
         </ul>
         <div class="result-actions">
-          ${result.restaurant.links.maps ? `<a href="${result.restaurant.links.maps}" target="_blank" rel="noopener" class="btn btn-sm btn-outline">📍 Maps</a>` : ''}
+          ${result.restaurant.links.maps ? `<a href="${result.restaurant.links.maps}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">📍 Maps</a>` : ''}
           ${result.restaurant.phone ? `<a href="tel:${result.restaurant.phone.replace(/\D/g, '')}" class="btn btn-sm btn-outline">📞 Call</a>` : ''}
           <button class="btn btn-sm btn-primary" data-add-shortlist="${result.restaurant.id}">
             ${state.shortlist.includes(result.restaurant.id) ? '✓ In Picks' : '+ Add to Picks'}
@@ -929,6 +991,9 @@ function openModal(modal) {
 }
 
 function closeModal(modal) {
+  if (modal === elements.randomModal) {
+    stopRandomRoll();
+  }
   modal.hidden = true;
   document.body.style.overflow = '';
   modal.removeEventListener('keydown', trapFocus);
