@@ -3,356 +3,201 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top 10 Restaurants in Eden, New York</title>
-  <meta name="description" content="Discover the best 10 restaurants in Eden, NY. Local favorites with verified reviews, hours, and contact information." />
-  <meta name="og:title" content="Top 10 Restaurants in Eden, New York" />
-  <meta name="og:description" content="Discover the best 10 restaurants in Eden, NY. Local favorites featuring seafood, BBQ, bakeries, and more." />
-  <meta name="og:type" content="website" />
+  <title>Eden, NY Restaurant Picker | Top 10 Local Favorites</title>
+  <meta name="description" content="Find your perfect dinner in Eden, NY. Take our quick quiz or browse 10 curated local favorites with verified info." />
+  <meta property="og:title" content="Eden, NY Restaurant Picker" />
+  <meta property="og:description" content="Stop debating dinner—pick in 30 seconds. Top 10 restaurants in Eden, NY with quiz, filters, and shortlist." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://virtualecommerceinc.github.io/eden-ny-top-10-restaurants/og-image.png" />
   <link rel="canonical" href="https://virtualecommerceinc.github.io/eden-ny-top-10-restaurants/" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "name": "Top 10 Restaurants in Eden, NY",
+    "description": "Curated list of the best restaurants in Eden, New York area",
+    "numberOfItems": 10,
     "itemListElement": [
-      {"@type": "Restaurant", "name": "Eden Seafood & Pizzeria", "address": "8530 N Main St, Eden, NY 14057", "url": "https://goo.gl/maps/6wK6Zk3u3h9pGQWj9"},
-      {"@type": "Restaurant", "name": "Schunk's West Hill Grill", "address": "6883 S Buffalo St, East Eden, NY 14057", "url": "https://goo.gl/maps/7jJ3sfsfTnvSwvRP9"},
-      {"@type": "Restaurant", "name": "18 Mile Bakery", "address": "8570 N Main St, Eden, NY 14057", "url": "https://goo.gl/maps/4mMD5WgL5pYSkAWn6"},
-      {"@type": "Restaurant", "name": "Smokey's Saloon", "address": "8459 N Main St, Eden, NY 14057", "url": "https://goo.gl/maps/Dr9nYpN3K2Q2"}
+      {"@type": "ListItem", "position": 1, "item": {"@type": "Restaurant", "name": "Eden Seafood & Pizzeria", "address": {"@type": "PostalAddress", "streetAddress": "8530 N Main St", "addressLocality": "Eden", "addressRegion": "NY", "postalCode": "14057"}}},
+      {"@type": "ListItem", "position": 2, "item": {"@type": "Restaurant", "name": "Schunk's West Hill Grill", "address": {"@type": "PostalAddress", "streetAddress": "6883 S Buffalo St", "addressLocality": "East Eden", "addressRegion": "NY", "postalCode": "14057"}}},
+      {"@type": "ListItem", "position": 3, "item": {"@type": "Restaurant", "name": "Four Corners Café", "address": {"@type": "PostalAddress", "streetAddress": "7755 Erie Rd", "addressLocality": "Derby", "addressRegion": "NY", "postalCode": "14047"}}},
+      {"@type": "ListItem", "position": 4, "item": {"@type": "Restaurant", "name": "Rayzor's Dawg House", "address": {"@type": "PostalAddress", "streetAddress": "7020 S Buffalo St", "addressLocality": "Orchard Park", "addressRegion": "NY", "postalCode": "14127"}}},
+      {"@type": "ListItem", "position": 5, "item": {"@type": "Restaurant", "name": "Ladybird Deli & Bakery", "address": {"@type": "PostalAddress", "streetAddress": "7749 Erie Rd", "addressLocality": "Derby", "addressRegion": "NY", "postalCode": "14047"}}},
+      {"@type": "ListItem", "position": 6, "item": {"@type": "Restaurant", "name": "18 Mile Bakery", "address": {"@type": "PostalAddress", "streetAddress": "8570 N Main St", "addressLocality": "Eden", "addressRegion": "NY", "postalCode": "14057"}}},
+      {"@type": "ListItem", "position": 7, "item": {"@type": "Restaurant", "name": "Eden Restaurant & Lounge", "address": {"@type": "PostalAddress", "streetAddress": "8570 N Main St", "addressLocality": "Eden", "addressRegion": "NY", "postalCode": "14057"}}},
+      {"@type": "ListItem", "position": 8, "item": {"@type": "Restaurant", "name": "Smokey's Saloon", "address": {"@type": "PostalAddress", "streetAddress": "8459 N Main St", "addressLocality": "Eden", "addressRegion": "NY", "postalCode": "14057"}}},
+      {"@type": "ListItem", "position": 9, "item": {"@type": "Restaurant", "name": "Eden Brewing Company", "address": {"@type": "PostalAddress", "streetAddress": "8401 S Buffalo St", "addressLocality": "Eden", "addressRegion": "NY", "postalCode": "14057"}}},
+      {"@type": "ListItem", "position": 10, "item": {"@type": "Restaurant", "name": "8 Mile BBQ", "address": {"@type": "PostalAddress", "streetAddress": "8241 S Buffalo St", "addressLocality": "Orchard Park", "addressRegion": "NY", "postalCode": "14127"}}}
     ]
   }
   </script>
 </head>
 <body>
+  <!-- Animated Background Layers -->
+  <div class="bg-layers" aria-hidden="true">
+    <div class="bg-sky"></div>
+    <div class="bg-clouds bg-clouds-back"></div>
+    <div class="bg-clouds bg-clouds-front"></div>
+    <div class="bg-trees bg-trees-back"></div>
+    <div class="bg-trees bg-trees-front"></div>
+    <div class="bg-grass"></div>
+  </div>
+
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="picker-hero" aria-label="Restaurant Picker Hero">
-    <div class="header-inner">
-      <h1>Eden, NY Restaurant Picker</h1>
-      <p class="subtitle">Stop debating—pick dinner in 30 seconds.</p>
-      <div class="hero-buttons">
-        <button id="take-quiz" aria-label="Take the Quiz">Take the Quiz</button>
-        <button id="browse-list" aria-label="Browse the List">Browse the List</button>
+  <!-- Sticky Mini-Nav -->
+  <nav class="mini-nav" id="mini-nav" aria-label="Quick actions">
+    <div class="mini-nav-inner">
+      <a href="#hero" class="mini-nav-brand">🍽️ Eden Eats</a>
+      <div class="mini-nav-actions">
+        <button id="mini-quiz-btn" class="mini-nav-btn" aria-label="Take the dinner quiz">Quiz</button>
+        <button id="mini-shortlist-btn" class="mini-nav-btn" aria-label="View your shortlist">
+          Picks <span id="shortlist-count" class="badge" aria-live="polite">0</span>
+        </button>
       </div>
-      <p class="last-updated">Last updated: February 10, 2026</p>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero" aria-label="Restaurant Picker Hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Eden, NY<br><span class="highlight">Restaurant Picker</span></h1>
+      <p class="hero-subtitle">Stop debating—pick dinner in 30 seconds.</p>
+      <div class="hero-buttons">
+        <button id="take-quiz-btn" class="btn btn-primary btn-lg" aria-label="Take the Dinner Decider quiz">
+          🎯 Take the Quiz
+        </button>
+        <button id="browse-btn" class="btn btn-secondary btn-lg" aria-label="Browse all restaurants">
+          📋 Browse All
+        </button>
+      </div>
+      <p class="hero-updated">Last updated: February 2025</p>
     </div>
   </header>
 
-  <main id="main-content" class="site-main">
-    <nav class="toc">
-      <h2>Quick Navigation</h2>
-      <ul class="toc-list">
-        <li><a href="#eden-seafood">Eden Seafood & Pizzeria</a></li>
-        <li><a href="#schunks">Schunk's West Hill Grill</a></li>
-        <li><a href="#four-corners">Four Corners Café</a></li>
-        <li><a href="#rayzors">Rayzor's Dawg House</a></li>
-        <li><a href="#ladybird">Ladybird Deli & Bakery</a></li>
-        <li><a href="#18-mile">18 Mile Bakery</a></li>
-        <li><a href="#eden-rest">Eden Restaurant & Lounge</a></li>
-        <li><a href="#smokeys">Smokey's Saloon</a></li>
-        <li><a href="#eden-brewing">Eden Brewing Company</a></li>
-        <li><a href="#8-mile">8 Mile BBQ</a></li>
-      </ul>
-    </nav>
-
-    <!-- Filters -->
-    <section class="filters" aria-label="Restaurant Filters">
-      <input type="search" id="search-input" placeholder="Search restaurants" aria-label="Search restaurants">
-      <div id="filter-chips" class="filter-chips" aria-label="Filter by category or vibe">
-        <!-- Chips will be generated dynamically -->
+  <main id="main-content" class="main-content">
+    <!-- Featured Spotlight: Rayzor's -->
+    <section class="spotlight-section" id="spotlight" aria-labelledby="spotlight-heading">
+      <div class="container">
+        <h2 id="spotlight-heading" class="section-title">✨ Featured Spotlight</h2>
+        <p class="section-desc">A local favorite worth highlighting—shown transparently, not hidden in results.</p>
+        <div id="spotlight-card" class="spotlight-card">
+          <!-- Rendered by JS -->
+        </div>
       </div>
-      <select id="sort-options" aria-label="Sort restaurants">
-        <option value="az">A–Z</option>
-        <option value="eden-first">In Eden First</option>
-        <option value="most-sources">Most Sources</option>
-      </select>
     </section>
 
-    <!-- Shortlist Panel -->
-    <section id="shortlist-panel" class="shortlist-panel" aria-label="Shortlist">
-      <h2>Your Shortlist</h2>
-      <ul id="shortlist-list"></ul>
-      <button id="copy-shortlist" aria-label="Copy Shortlist">Copy Shortlist</button>
-      <button id="random-pick" aria-label="Random Pick">Random Pick from Shortlist</button>
+    <!-- Tonight's Picks (Shortlist) -->
+    <section class="shortlist-section" id="shortlist-section" aria-labelledby="shortlist-heading">
+      <div class="container">
+        <h2 id="shortlist-heading" class="section-title">🌙 Tonight's Picks</h2>
+        <p class="section-desc">Your curated shortlist. Add restaurants as you browse!</p>
+        <div id="shortlist-panel" class="shortlist-panel">
+          <div id="shortlist-empty" class="shortlist-empty">
+            <p>No picks yet! Click the ❤️ on any restaurant to add it here.</p>
+          </div>
+          <ul id="shortlist-list" class="shortlist-list" role="list" aria-label="Your shortlisted restaurants"></ul>
+          <div id="shortlist-actions" class="shortlist-actions" hidden>
+            <button id="random-pick-btn" class="btn btn-accent" aria-label="Random pick from shortlist">🎲 Random Pick</button>
+            <button id="clear-shortlist-btn" class="btn btn-outline" aria-label="Clear shortlist">Clear All</button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Restaurant Cards -->
-    <section class="restaurants" id="restaurant-list" aria-label="Restaurant List">
-      <!-- Restaurant cards will be rendered here via script -->
-    </section>
-    <script src="script.js" defer></script>
-      <!-- 1 -->
-      <article class="restaurant-card" id="eden-seafood">
-        <h2>Eden Seafood & Pizzeria</h2>
-        <p class="category">🐟 Seafood & Pizza</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/6wK6Zk3u3h9pGQWj9" target="_blank">8530 N Main St, Eden, NY 14057</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+17169929020">(716) 992-9020</a></p>
-          <p><strong>Hours:</strong> Mon–Wed 11am–9pm | Thu–Fri 11am–10pm | Sat 11am–10pm | Sun 11am–9pm</p>
+    <!-- Filters & Search -->
+    <section class="filters-section" id="filters" aria-labelledby="filters-heading">
+      <div class="container">
+        <h2 id="filters-heading" class="visually-hidden">Filter Restaurants</h2>
+        <div class="filters-bar">
+          <div class="search-wrapper">
+            <label for="search-input" class="visually-hidden">Search restaurants</label>
+            <input type="search" id="search-input" class="search-input" placeholder="🔍 Search restaurants..." autocomplete="off" />
+          </div>
+          <div id="filter-chips" class="filter-chips" role="group" aria-label="Filter by category">
+            <!-- Chips rendered by JS -->
+          </div>
+          <div class="sort-wrapper">
+            <label for="sort-select" class="visually-hidden">Sort restaurants</label>
+            <select id="sort-select" class="sort-select">
+              <option value="default">Sort: Featured</option>
+              <option value="az">A–Z</option>
+              <option value="za">Z–A</option>
+              <option value="eden-first">Eden First</option>
+            </select>
+          </div>
         </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Fresh seafood offerings with local reputation</li>
-            <li>Popular pizzas and casual atmosphere</li>
-            <li>Consistent reviews praising friendly service</li>
-            <li>Family-friendly dining destination</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/6wK6Zk3u3h9pGQWj9" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.yelp.com/biz/eden-seafood-and-pizzeria-eden" target="_blank">Yelp Reviews</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 2 -->
-      <article class="restaurant-card" id="schunks">
-        <h2>Schunk's West Hill Grill</h2>
-        <p class="category">🍖 American Grill & Diner</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/7jJ3sfsfTnvSwvRP9" target="_blank">6883 S Buffalo St, East Eden, NY 14057</a></p>
-          <p><strong>Vibe:</strong> Casual, family-oriented</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Well-reviewed for hearty American fare</li>
-            <li>Popular with locals for daily dining</li>
-            <li>Known for generous portions</li>
-            <li>Welcoming, neighborhood atmosphere</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/7jJ3sfsfTnvSwvRP9" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.tripadvisor.com/Restaurant_Review-g48232-d7702693-Reviews-Schunk_s_West_Hill_Grill-East_Eden_Eden_New_York.html" target="_blank">TripAdvisor</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 3 -->
-      <article class="restaurant-card" id="four-corners">
-        <h2>Four Corners Café</h2>
-        <p class="category">☕ Café & Bakery</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/DNHZqHjLvNvYqM1m9" target="_blank">7755 Erie Rd, Derby, NY 14047</a></p>
-          <p><strong>Specialty:</strong> Baked goods, coffee, light breakfast</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Praised for fresh-baked pastries and breads</li>
-            <li>Quality coffee and friendly baristas</li>
-            <li>Popular morning destination for locals</li>
-            <li>Charming, community-focused atmosphere</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/DNHZqHjLvNvYqM1m9" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.facebook.com/fourcornerscafederby" target="_blank">Facebook</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 4 -->
-      <article class="restaurant-card" id="rayzors">
-        <h2>Rayzor's Dawg House</h2>
-        <p class="category">🌭 Hot Dogs & Fast Casual</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/tCc1XfPqPtmXwLtN9" target="_blank">7020 S Buffalo St, Orchard Park, NY 14127</a></p>
-          <p><strong>Style:</strong> Quick-service, casual</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Local favorite for quality hot dogs</li>
-            <li>Reasonably priced, quick service</li>
-            <li>Popular with families and kids</li>
-            <li>Beloved regional fast-casual chain</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/tCc1XfPqPtmXwLtN9" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.yelp.com/biz/rayzors-dawg-house-orchard-park" target="_blank">Yelp Reviews</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 5 -->
-      <article class="restaurant-card" id="ladybird">
-        <h2>Ladybird Deli & Bakery</h2>
-        <p class="category">🥪 Deli & Bakery</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/GsdABdFQ71u6JJMb8" target="_blank">7749 Erie Rd, Derby, NY 14047</a></p>
-          <p><strong>Specialty:</strong> Sandwiches, baked goods, takeout</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Handmade sandwiches with quality ingredients</li>
-            <li>Fresh-baked breads and pastries daily</li>
-            <li>Perfect for lunch on the go</li>
-            <li>Consistently praised for value and quality</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/GsdABdFQ71u6JJMb8" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.tripadvisor.com/Restaurant_Review-g48232-d11685041-Reviews-Ladybird_Deli_and_Bakery-Eden_New_York.html" target="_blank">TripAdvisor</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 6 -->
-      <article class="restaurant-card" id="18-mile">
-        <h2>18 Mile Bakery</h2>
-        <p class="category">🍰 Bakery & Café</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/4mMD5WgL5pYSkAWn6" target="_blank">8570 N Main St, Eden, NY 14057</a></p>
-          <p><strong>Specialty:</strong> Artisan bakery goods, coffee</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Renowned for quality artisan baking</li>
-            <li>Wide variety of breads, cakes, and pastries</li>
-            <li>Excellent coffee and beverage selection</li>
-            <li>Strong local following and reputation</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/4mMD5WgL5pYSkAWn6" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.yelp.com/biz/18-mile-bakery-eden" target="_blank">Yelp Reviews</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 7 -->
-      <article class="restaurant-card" id="eden-rest">
-        <h2>Eden Restaurant & Lounge</h2>
-        <p class="category">🍽️ American Pub</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/3ABnVV8zYkK2" target="_blank">8570 N Main St, Eden, NY 14057</a></p>
-          <p><strong>Phone:</strong> Contact via website</p>
-          <p><strong>Vibe:</strong> Casual dining, evening atmosphere</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Popular dinner and drinks destination</li>
-            <li>Friendly staff and welcoming atmosphere</li>
-            <li>Good pub food and drink selection</li>
-            <li>Central Eden location on Main Street</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/3ABnVV8zYkK2" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.edenrestaurantlounge.com" target="_blank">Official Website</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 8 -->
-      <article class="restaurant-card" id="smokeys">
-        <h2>Smokey's Saloon</h2>
-        <p class="category">🍺 Bar & Grill</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/Dr9nYpN3K2Q2" target="_blank">8459 N Main St, Eden, NY 14057</a></p>
-          <p><strong>Vibe:</strong> Casual bar, grill fare</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Local favorite for casual dining and drinks</li>
-            <li>Affordable comfort food and grill items</li>
-            <li>Friendly neighborhood bar atmosphere</li>
-            <li>Popular spot for locals and regulars</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/Dr9nYpN3K2Q2" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.facebook.com/SmokeysSaloonEden" target="_blank">Facebook Page</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 9 -->
-      <article class="restaurant-card" id="eden-brewing">
-        <h2>Eden Brewing Company</h2>
-        <p class="category">🍺 Brewery & Pub</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/wd6A3YZdHfM2" target="_blank">8401 S Buffalo St, Eden, NY 14057</a></p>
-          <p><strong>Specialty:</strong> Craft beers, brewery tours</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Local craft brewery with quality house beers</li>
-            <li>Great for beer enthusiasts and casual visitors</li>
-            <li>Welcoming taproom and patio space</li>
-            <li>Supports local craft beer community</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/wd6A3YZdHfM2" target="_blank">Google Maps</a></li>
-            <li><a href="https://untappd.com/v/eden-brewing-company/" target="_blank">Untappd (Beer Reviews)</a></li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- 10 -->
-      <article class="restaurant-card" id="8-mile">
-        <h2>8 Mile BBQ</h2>
-        <p class="category">🔥 BBQ & Smokehouse</p>
-        <div class="details">
-          <p><strong>Address:</strong> <a href="https://goo.gl/maps/Kk7yr5r6WxE2" target="_blank">8241 S Buffalo St, Orchard Park, NY 14127</a></p>
-          <p><strong>Specialty:</strong> Smoked meats, BBQ platters</p>
-        </div>
-        <div class="review-snapshot">
-          <h3>Why It's in the Top 10</h3>
-          <ul>
-            <li>Well-regarded for authentic BBQ and smoked meats</li>
-            <li>Tender ribs, brisket, and pulled pork</li>
-            <li>Quality sides and traditional BBQ flavor</li>
-            <li>Popular for casual dining and takeout</li>
-          </ul>
-        </div>
-        <div class="sources">
-          <strong>Sources:</strong>
-          <ul>
-            <li><a href="https://goo.gl/maps/Kk7yr5r6WxE2" target="_blank">Google Maps</a></li>
-            <li><a href="https://www.yelp.com/biz/8-mile-bbq-orchard-park" target="_blank">Yelp Reviews</a></li>
-          </ul>
-        </div>
-      </article>
+        <div id="active-filters" class="active-filters" aria-live="polite"></div>
+      </div>
     </section>
 
-    <section class="disclaimer">
-      <h2>About This Guide</h2>
-      <p>Review summaries are compiled from publicly available sources including Google Maps, Yelp, TripAdvisor, and Facebook. Ratings, hours, and reviews may change. Always call ahead or check online before visiting to confirm current hours and details.</p>
+    <!-- Restaurant List -->
+    <section class="restaurants-section" id="restaurants" aria-labelledby="restaurants-heading">
+      <div class="container">
+        <h2 id="restaurants-heading" class="section-title">🍴 All Restaurants</h2>
+        <p class="section-desc" id="results-count" aria-live="polite">Showing all 10 restaurants</p>
+        <div id="restaurant-list" class="restaurant-grid" role="list" aria-label="Restaurant listings">
+          <!-- Cards rendered by JS -->
+        </div>
+        <div id="no-results" class="no-results" hidden>
+          <p>😕 No restaurants match your filters.</p>
+          <button id="clear-filters-btn" class="btn btn-outline">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 id="about-heading" class="section-title">📖 About This Guide</h2>
+        <p>This curated list features 10 well-reviewed restaurants in the Eden, NY area. Information is compiled from Google Maps, Yelp, TripAdvisor, and Facebook. Ratings and hours may change—always verify before visiting.</p>
+        <p><strong>Transparency note:</strong> Rayzor's Dawg House appears in the Featured Spotlight because it's a beloved local favorite. The quiz scoring is honest and unbiased—all restaurants can win based on your answers.</p>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Top 10 Restaurants in Eden, NY. Data compiled from public sources for informational purposes.</p>
-    <p>Built by PhilBot | <a href="https://github.com/virtualecommerceinc/eden-ny-top-10-restaurants">View on GitHub</a></p>
+  <!-- Quiz Modal -->
+  <div id="quiz-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden>
+    <div class="modal-backdrop" tabindex="-1"></div>
+    <div class="modal-content">
+      <button id="quiz-close-btn" class="modal-close" aria-label="Close quiz">&times;</button>
+      <div id="quiz-container">
+        <header class="quiz-header">
+          <h2 id="quiz-title" class="quiz-title">🎯 Dinner Decider</h2>
+          <p class="quiz-subtitle">Answer 5 quick questions to find your perfect spot!</p>
+          <div id="quiz-progress" class="quiz-progress" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0">
+            <div class="quiz-progress-bar"></div>
+          </div>
+        </header>
+        <div id="quiz-questions" class="quiz-questions">
+          <!-- Questions rendered by JS -->
+        </div>
+        <div id="quiz-results" class="quiz-results" hidden>
+          <!-- Results rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Random Pick Modal -->
+  <div id="random-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="random-title" hidden>
+    <div class="modal-backdrop" tabindex="-1"></div>
+    <div class="modal-content modal-content-sm">
+      <button id="random-close-btn" class="modal-close" aria-label="Close">&times;</button>
+      <div id="random-result" class="random-result">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Eden, NY Restaurant Picker. Data from public sources.</p>
+      <p>Built with ❤️ by <a href="https://github.com/virtualecommerceinc" target="_blank" rel="noopener">VirtualEcommerceInc</a></p>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
