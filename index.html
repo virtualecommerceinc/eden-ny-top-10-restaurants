@@ -26,10 +26,14 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header">
+  <header class="picker-hero" aria-label="Restaurant Picker Hero">
     <div class="header-inner">
-      <h1>🍽️ Top 10 Restaurants in Eden, NY</h1>
-      <p class="subtitle">Your guide to the best local dining in Eden, New York</p>
+      <h1>Eden, NY Restaurant Picker</h1>
+      <p class="subtitle">Stop debating—pick dinner in 30 seconds.</p>
+      <div class="hero-buttons">
+        <button id="take-quiz" aria-label="Take the Quiz">Take the Quiz</button>
+        <button id="browse-list" aria-label="Browse the List">Browse the List</button>
+      </div>
       <p class="last-updated">Last updated: February 10, 2026</p>
     </div>
   </header>
@@ -51,8 +55,32 @@
       </ul>
     </nav>
 
+    <!-- Filters -->
+    <section class="filters" aria-label="Restaurant Filters">
+      <input type="search" id="search-input" placeholder="Search restaurants" aria-label="Search restaurants">
+      <div id="filter-chips" class="filter-chips" aria-label="Filter by category or vibe">
+        <!-- Chips will be generated dynamically -->
+      </div>
+      <select id="sort-options" aria-label="Sort restaurants">
+        <option value="az">A–Z</option>
+        <option value="eden-first">In Eden First</option>
+        <option value="most-sources">Most Sources</option>
+      </select>
+    </section>
+
+    <!-- Shortlist Panel -->
+    <section id="shortlist-panel" class="shortlist-panel" aria-label="Shortlist">
+      <h2>Your Shortlist</h2>
+      <ul id="shortlist-list"></ul>
+      <button id="copy-shortlist" aria-label="Copy Shortlist">Copy Shortlist</button>
+      <button id="random-pick" aria-label="Random Pick">Random Pick from Shortlist</button>
+    </section>
+
     <!-- Restaurant Cards -->
-    <section class="restaurants">
+    <section class="restaurants" id="restaurant-list" aria-label="Restaurant List">
+      <!-- Restaurant cards will be rendered here via script -->
+    </section>
+    <script src="script.js" defer></script>
       <!-- 1 -->
       <article class="restaurant-card" id="eden-seafood">
         <h2>Eden Seafood & Pizzeria</h2>
