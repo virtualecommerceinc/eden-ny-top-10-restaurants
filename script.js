@@ -413,6 +413,7 @@ const elements = {
   shortlistList: document.getElementById('shortlist-list'),
   shortlistActions: document.getElementById('shortlist-actions'),
   randomPickBtn: document.getElementById('random-pick-btn'),
+  randomHelper: document.getElementById('random-helper'),
   clearShortlistBtn: document.getElementById('clear-shortlist-btn'),
   
   // Filters
@@ -653,14 +654,13 @@ function renderFilterChips() {
 function renderShortlist() {
   const count = state.shortlist.length;
   elements.shortlistCount.textContent = count;
+  elements.shortlistActions.hidden = false;
   
   if (count === 0) {
     elements.shortlistEmpty.hidden = false;
     elements.shortlistList.innerHTML = '';
-    elements.shortlistActions.hidden = true;
   } else {
     elements.shortlistEmpty.hidden = true;
-    elements.shortlistActions.hidden = false;
     
     elements.shortlistList.innerHTML = state.shortlist.map(id => {
       const restaurant = restaurants.find(r => r.id === id);
@@ -680,6 +680,33 @@ function renderShortlist() {
       });
     });
   }
+
+  updateRandomPickerState();
+}
+
+function updateRandomPickerState() {
+  const shortlistCount = state.shortlist.length;
+  const canRandomPick = shortlistCount >= 2;
+
+  if (!elements.randomPickBtn || !elements.randomHelper) return;
+
+  elements.randomPickBtn.disabled = !canRandomPick;
+  elements.randomPickBtn.setAttribute('aria-disabled', String(!canRandomPick));
+
+  if (shortlistCount === 0) {
+    elements.randomHelper.textContent = 'Add at least two restaurants to your picks to use the Random Picker.';
+    elements.randomHelper.hidden = false;
+    return;
+  }
+
+  if (shortlistCount === 1) {
+    elements.randomHelper.textContent = 'Add one more restaurant to let the Random Picker decide.';
+    elements.randomHelper.hidden = false;
+    return;
+  }
+
+  elements.randomHelper.textContent = '';
+  elements.randomHelper.hidden = true;
 }
 
 // =============================================================================
@@ -694,6 +721,7 @@ function toggleShortlist(restaurantId) {
   }
   saveState();
   renderShortlist();
+  updateRandomPickerState();
   renderRestaurants();
   renderSpotlight();
 }
@@ -1091,6 +1119,7 @@ function setupEventListeners() {
     state.shortlist = [];
     saveState();
     renderShortlist();
+    updateRandomPickerState();
     renderRestaurants();
     renderSpotlight();
   });
@@ -1124,6 +1153,7 @@ function init() {
   renderFilterChips();
   renderRestaurants();
   renderShortlist();
+  updateRandomPickerState();
   setupEventListeners();
   
   console.log('🍽️ Eden Restaurant Picker initialized!');
